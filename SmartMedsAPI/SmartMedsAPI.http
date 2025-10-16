@@ -1,0 +1,6 @@
+@SmartMedsAPI_HostAddress = http://localhost:5171
+
+GET {{SmartMedsAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
