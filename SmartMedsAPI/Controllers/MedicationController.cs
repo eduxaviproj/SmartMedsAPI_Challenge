@@ -65,7 +65,7 @@ namespace SmartMedsAPI.Controllers
 
         [HttpDelete]
         [Route("{id:guid}")]
-        public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             var entity = await medicationRepos.DeleteAsync(id);
 

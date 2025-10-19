@@ -2,3 +2,18 @@
 bin/
 obj/
 *.user
+
+# Pacotes NuGet
+*.nupkg
+.nuget/
+dist/
+
+# .NET Files
+**/bin/
+**/obj/
+.DS_Store
+
+# SQLITE Database Files
+*.db
+*.db-shm
+*.db-wal

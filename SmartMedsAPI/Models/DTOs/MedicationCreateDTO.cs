@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace SmartMedsAPI.Models.DTOs
 {
     public class MedicationCreateDTO
     {
         [Required, MaxLength(200)] public string Name { get; set; } = default!;
-        [Range(1, int.MaxValue)] public int Quantity { get; set; }
+        [DefaultValue(10)][Range(1, int.MaxValue)] public int Quantity { get; set; }
     }
 }
