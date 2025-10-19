@@ -67,12 +67,13 @@ namespace SmartMedsAPI.Controllers
         [Route("{id:guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            var entity = await medicationRepos.DeleteAsync(id);
+            try
+            {
+                await medicationRepos.DeleteAsync(id);
+                return NoContent();  //204 test
+            }
 
-            if (entity == null)
-            { return NotFound(); }
-
-            return NoContent();
+            catch (KeyNotFoundException) { return NotFound(); }              //404
         }
 
     }

@@ -33,17 +33,24 @@ namespace SmartMedsAPI.Repositories.Repos
             return medication;
         }
 
-        public async Task<Medication?> DeleteAsync(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
             var med = await dbContext.Medications.FindAsync(id);
 
             if (med == null)
-            { return null; }
+                throw new KeyNotFoundException($"Medication with ID '{id}' not found.");
 
             dbContext.Medications.Remove(med);
+
             await dbContext.SaveChangesAsync();
 
-            return med;
+            //if (med == null)
+            //{ return null; }
+
+            //dbContext.Medications.Remove(med);
+            //await dbContext.SaveChangesAsync();
+
+            //return med;
         }
 
     }

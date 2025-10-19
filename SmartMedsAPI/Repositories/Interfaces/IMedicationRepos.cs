@@ -6,6 +6,6 @@ namespace SmartMedsAPI.Repositories.Interfaces
     {
         Task<List<Medication>> GetAllAsync();
         Task<Medication> CreateAsync(Medication medication);
-        Task<Medication> DeleteAsync(Guid id);
+        Task DeleteAsync(Guid id);
     }
 }
