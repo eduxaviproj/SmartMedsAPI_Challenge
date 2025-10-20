@@ -20,14 +20,20 @@ namespace SmartMedsAPI.Controllers
         public async Task<ActionResult<List<MedicationViewDTO>>> GetAll()
         {
             var medsDomainModel = await medicationRepos.GetAllAsync();
-            var medsDTO = medsDomainModel.Select(med => new MedicationViewDTO
-            {
-                Id = med.Id,
-                Name = med.Name,
-                Quantity = med.Quantity,
-                CreatedAt = med.CreatedAt
-            }).ToList();
 
+            var medsDTO = new List<MedicationViewDTO>();
+
+            foreach (var med in medsDomainModel)
+            {
+                var dto = new MedicationViewDTO
+                {
+                    Id = med.Id,
+                    Name = med.Name,
+                    Quantity = med.Quantity,
+                    CreatedAt = med.CreatedAt
+                };
+                medsDTO.Add(dto);
+            }
             return Ok(medsDTO);
         }
 
