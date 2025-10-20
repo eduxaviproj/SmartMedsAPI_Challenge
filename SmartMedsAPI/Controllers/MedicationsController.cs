@@ -7,10 +7,10 @@ namespace SmartMedsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MedicationController : ControllerBase
+    public class MedicationsController : ControllerBase
     {
         private readonly IMedicationRepos medicationRepos;
-        public MedicationController(IMedicationRepos medicationRepos)
+        public MedicationsController(IMedicationRepos medicationRepos)
         {
             this.medicationRepos = medicationRepos;
         }
