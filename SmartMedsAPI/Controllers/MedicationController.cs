@@ -7,10 +7,10 @@ namespace SmartMedsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SmartMeds : ControllerBase
+    public class MedicationController : ControllerBase
     {
         private readonly IMedicationRepos medicationRepos;
-        public SmartMeds(IMedicationRepos medicationRepos)
+        public MedicationController(IMedicationRepos medicationRepos)
         {
             this.medicationRepos = medicationRepos;
         }
@@ -20,7 +20,7 @@ namespace SmartMedsAPI.Controllers
         public async Task<ActionResult<List<MedicationViewDTO>>> GetAll()
         {
             var medsDomainModel = await medicationRepos.GetAllAsync();
-            var medsDTO = medsDomainModel.Select(med => new Models.DTOs.MedicationViewDTO
+            var medsDTO = medsDomainModel.Select(med => new MedicationViewDTO
             {
                 Id = med.Id,
                 Name = med.Name,
@@ -70,10 +70,10 @@ namespace SmartMedsAPI.Controllers
             try
             {
                 await medicationRepos.DeleteAsync(id);
-                return NoContent();  //204 test
+                return NoContent();                                     //204 test
             }
 
-            catch (KeyNotFoundException) { return NotFound(); }              //404
+            catch (KeyNotFoundException) { return NotFound(); }         //404
         }
 
     }
